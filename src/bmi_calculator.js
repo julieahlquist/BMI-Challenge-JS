@@ -1,10 +1,10 @@
 function BMICalculator() {
 
     this.metric_bmi = function (object) {
-        const weight = object.weight;
-        const height = object.height;
+        let weight = object.weight;
+        let height = object.height;
         if (weight > 0 && height > 0) {
-            const finalBmi = weight / (height / 100 * height / 100);
+            let finalBmi = weight / (height / 100 * height / 100);
             object.bmiValue = parseFloat(finalBmi.toFixed(2));
             this.setBMIMessage(object)
         }

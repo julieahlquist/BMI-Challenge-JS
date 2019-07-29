@@ -40,4 +40,14 @@ describe('User can calculate BMI using imperial system', () => {
     after(async () => {
         await browser.close();
     });
+
+    it('by inputing his weight and height', async () => {
+        await browser.selectOption("select[id='my_select']", {option: "imperial" })
+        await browser.fillIn("input[id='weight-in-lbs']", { with: "170" })
+        await browser.fillIn("input[id='height-in-in']", { with: "70" })
+        await browser.clickOnButton("Calculate")
+        let content = await browser.getContent("span[id='display_value']")
+
+        expect(content).to.eql('Your BMI is 27.76');
+    });
 });

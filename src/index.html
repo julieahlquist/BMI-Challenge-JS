@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    <form id="calculate">
         <div class="form-group row">
             <div class="col-auto">
                 <select class="form-control" id="my_select">
@@ -19,6 +18,7 @@
             </div>
         </div>
 
+    <form id="calculate">
         <div id="metric-inputs">
             <input type="text" id="weight-in-kgs" placeholder="Weight">
             <input type="text" id="height-in-cm" placeholder="Height">
@@ -28,30 +28,37 @@
             <input type="text" id="weight-in-lbs" placeholder="Weight">
             <input type="text" id="height-in-in" placeholder="Height">
         </div>
-
-        <button type="submit" value="Calculate"> Calculate </button>
     </form>
+        <button type="submit" value="Calculate"> Calculate </button>
     <div>
         <span id="display_value"></span>
         <span id="display_message"></span>
     </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 
         const global = {}
 
         global.calculateForm = document.querySelector('#calculate');
         global.displayValueElement = document.querySelector('#display_value');
         global.displayMessageElement = document.querySelector('#display_message');
+        global.methodSelector = document.querySelector('#my_select');
         const calculateBMI = () => {
+            var method = global.methodSelector.options[global.methodSelector.selectedIndex].value
             return new Promise(resolve => {
-                let w = parseFloat(document.getElementById('weight-in-kgs').value);
-                let h = parseFloat(document.getElementById('height-in-cm').value);
+
+                let weightFormat = method === 'metric' ? 'weight-in-kgs' : 'weight-in-lbs'
+                let heightFormat = method === 'metric' ? 'height-in-cm' : 'height-in-in'
+
+                let w = parseFloat(document.getElementById(weightFormat).value);
+                let h = parseFloat(document.getElementById(heightFormat).value);
+
                 let person = new Person({
                     weight: w,
                     height: h,
                 });
-                person.calculate_bmi();
+
+                method === 'metric' ? person.calculate_bmi() : person.calculate_imperial_bmi();
                 resolve(person);
             })
         };
