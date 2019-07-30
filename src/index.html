@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>BMI Calculator</title>
-    <script src="src/person.js"></script>
-    <script src="src/bmi_calculator.js"></script>
+    <script src="person.js"></script>
+    <script src="bmi_calculator.js"></script>
 </head>
 
 <body>
@@ -28,8 +28,10 @@
             <input type="text" id="weight-in-lbs" placeholder="Weight">
             <input type="text" id="height-in-in" placeholder="Height">
         </div>
-    </form>
+
         <button type="submit" value="Calculate"> Calculate </button>
+    </form>
+
     <div>
         <span id="display_value"></span>
         <span id="display_message"></span>
@@ -43,6 +45,17 @@
         global.displayValueElement = document.querySelector('#display_value');
         global.displayMessageElement = document.querySelector('#display_message');
         global.methodSelector = document.querySelector('#my_select');
+
+        document.addEventListener('DOMContentLoaded', () => {
+            global.calculateForm.addEventListener('submit', event => {
+                event.preventDefault();
+                calculateBMI()
+                .then(person => {
+                    global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}`;
+                    global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
+                })
+            })
+        });
         const calculateBMI = () => {
             var method = global.methodSelector.options[global.methodSelector.selectedIndex].value
             return new Promise(resolve => {
