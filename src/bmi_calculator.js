@@ -16,7 +16,7 @@ function BMICalculator() {
         if (weight > 0 && height > 0) {
           let finalBmi = weight / (height * height) * 703;
               obj.bmiValue = parseFloat(finalBmi.toFixed(2));
-              setBMIMessage(obj);
+              this.setBMIMessage(obj);
         }
     }
   
