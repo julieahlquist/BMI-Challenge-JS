@@ -3,39 +3,42 @@
 
 <head>
     <meta charset="utf-8">
-    <title>BMI Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <script src="person.js"></script>
     <script src="bmi_calculator.js"></script>
+    <title>BMI Calculator</title>
 </head>
 
 <body>
-        <div class="form-group row">
-            <div class="col-auto">
-                <select class="form-control" id="my_select">
-                <option value="metric">Metric System</option>
-                <option value="imperial">Imperial System</option>
-                </select>
-            </div>
-        </div>
-
-    <form id="calculate">
-        <div id="metric-inputs">
-            <input type="text" id="weight-in-kgs" placeholder="Weight">
-            <input type="text" id="height-in-cm" placeholder="Height">
-        </div>
-
-        <div id="imperial-inputs">
-            <input type="text" id="weight-in-lbs" placeholder="Weight">
-            <input type="text" id="height-in-in" placeholder="Height">
-        </div>
-
-        <button type="submit" value="Calculate"> Calculate </button>
-    </form>
-
-    <div>
-        <span id="display_value"></span>
-        <span id="display_message"></span>
+  <div class="form-group row">
+    <div class="col-auto">
+      <select class="form-control" id="my_select">
+        <option value="metric">Metric System</option>
+        <option value="imperial">Imperial System</option>
+      </select>
     </div>
+  </div>
+
+  <form id="calculate">
+    <div id="metric-inputs">
+      <input type="text" class="form-input" id="weight-in-kgs" placeholder="Weight [kg]">
+      <input type="text" class="form-input" id="height-in-cm" placeholder="Height [cm]">
+    </div>
+
+    <div id="imperial-inputs">
+      <input type="text" class="form-input" id="weight-in-lbs" placeholder="Weight">
+      <input type="text" class="form-input" id="height-in-in" placeholder="Height">
+    </div>
+
+    <button type="submit" value="Calculate"> Calculate </button>
+  </form>
+
+  <div>
+    <span id="display_value"></span>
+    <span id="display_message"></span>
+  </div>
 
 <script type="text/javascript">
 
