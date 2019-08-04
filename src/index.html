@@ -12,8 +12,13 @@
 </head>
 
 <body>
-  <div class="form-group row">
-    <div class="col-auto">
+
+  <div class="container"></div>
+    <div id="title">BMI Calculator</div>
+    <div id="description">blabla</div>
+  </div>
+
+  <div class="container">
       <select class="form-control" id="my_select">
         <option value="metric">Metric System</option>
         <option value="imperial">Imperial System</option>
@@ -22,18 +27,21 @@
   </div>
 
   <form id="calculate">
-    <div id="metric-inputs">
+    <div class="container" id="metric-inputs">
       <input type="text" class="form-input" id="weight-in-kgs" placeholder="Weight [kg]">
       <input type="text" class="form-input" id="height-in-cm" placeholder="Height [cm]">
     </div>
 
-    <div id="imperial-inputs">
+    <div class="container" id="imperial-inputs">
       <input type="text" class="form-input" id="weight-in-lbs" placeholder="Weight">
       <input type="text" class="form-input" id="height-in-in" placeholder="Height">
     </div>
 
-    <button type="submit" value="Calculate"> Calculate </button>
+  <div class="container">
+    <button type="submit" value="Calculate" id="calculate-bmi"> Calculate </button>
+  </div>
   </form>
+</div>
 
   <div>
     <span id="display_value"></span>
